@@ -1,11 +1,11 @@
 # Introduction
 
-Exemple d'un projet docker compose minimaliste pour prometheus, grafana, alert manager et pushgateway.
+Example of a minimal docker compose project for prometheus, grafana, alert manager and pushgateway.
 
-# Environnement
+# Environment
 
-Créer un fichier .env à la racine du projet.
-Exemple de fichier .env
+Create a .env file at the root of the project.
+Example of .env file:
 
 ```shell
 COMPOSE_PROJECT_NAME=app-monitoring
@@ -23,17 +23,17 @@ PROMETHEUS_RETENTION_TIME=3d
 
 ```
 
-# Déploiement
+# Deployment
 
-Pour déployer le conteneur, exécuter la commande suivante:
+To deploy the container, run the following command:
 
 ```shell
 docker compose -f docker-compose-monitoring.yaml up -d --build
 ```
 
--d: detach mode, pour ne pas bloquer la console et --build: pour régénerer les images à chaque déploiement
+-d: detach mode, to avoid blocking the console and --build: to rebuild images on each deployment
 
-# Documentation officielle
+# Official Documentation
 
-- Prometheus, Alertmanager et Pushgateway: https://prometheus.io/docs/introduction/overview/
+- Prometheus, Alertmanager and Pushgateway: https://prometheus.io/docs/introduction/overview/
 - Grafana: https://grafana.com/docs/
