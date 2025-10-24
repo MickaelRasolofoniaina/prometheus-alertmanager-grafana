@@ -1,0 +1,36 @@
+global:
+  scrape_interval: 10s
+rule_files:
+  - rules.yml
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - alertmanager:9093
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets:
+          - prometheus:9095
+
+  - job_name: pushgateway
+    static_configs:
+      - targets:
+          - pushgateway:9096
+    honor_labels: true
+
+  - job_name: alertmanager
+    static_configs:
+      - targets:
+          - alertmanager:9093
+
+  - job_name: grafana
+    static_configs:
+      - targets:
+          - grafana:9094
+
+remote_write:
+  - url: http://grafana:9094
+    basic_auth:
+      username: ${GRAFANA_ADMIN_USER}
+      password: ${GRAFANA_ADMIN_PASSWORD}

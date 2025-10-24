@@ -1,0 +1,10 @@
+groups:
+  - name: instance-down
+    rules:
+      # all services should be up and running
+      - alert: InstanceDown
+        expr: up == 0
+        for: 1m
+        annotations:
+          summary: "L'instance {{ $labels.instance }} est éteinte"
+          description: "{{ $labels.instance }} du job {{ $labels.job }} est éteint depuis plus de 5 minutes."
