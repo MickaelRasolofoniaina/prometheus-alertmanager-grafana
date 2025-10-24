@@ -1,6 +1,5 @@
 # Docker-compose for monitoring stack of  Watt project
 services:
-  name: ${COMPOSE_PROJECT_NAME}
   alertmanager:
     image: "prom/alertmanager:v0.28.0"
     container_name: ${ALERTMGR_CONTAINER_NAME}
@@ -81,7 +80,7 @@ services:
       - "--web.listen-address=:9096"
       - "--persistence.file=/pushgateway/metrics.pb"
 networks:
-  stelog-monitoring:
+  network-monitoring:
     driver: bridge
 volumes:
   grafana-data:
